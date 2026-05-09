@@ -1,0 +1,13 @@
+[project]
+name = "discodrome"
+version = "0.1.0"
+description = "A powerful Discord bot that streams music from your personal SubSonic server."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "davey>=0.1.5",
+    "discord-py>=2.7.0",
+    "pynacl>=1.6.2",
+    "python-dotenv>=1.2.2",
+    "requests>=2.33.1",
+]
