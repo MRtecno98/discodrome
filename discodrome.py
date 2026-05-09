@@ -71,8 +71,9 @@ class DiscodromeClient(commands.Bot):
         if self.test_guild:
             await self.sync_command_tree()
 
-        loop = asyncio.get_running_loop()
-        loop.add_signal_handler(signal.SIGTERM, lambda: asyncio.ensure_future(self._on_sigterm()))
+        if os.name != 'nt':
+            loop = asyncio.get_running_loop()
+            loop.add_signal_handler(signal.SIGTERM, lambda: asyncio.ensure_future(self._on_sigterm()))
 
     async def _on_sigterm(self) -> None:
         ''' Graceful shutdown on SIGTERM. '''
