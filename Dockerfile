@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY requirements.txt requirements.txt
 
-RUN apk add --no-cache alpine-sdk ffmpeg libffi-dev \
+RUN apk add --no-cache alpine-sdk opus ffmpeg libffi-dev \
     && pip3 install -r requirements.txt \
     && apk del alpine-sdk
 

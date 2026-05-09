@@ -3,7 +3,7 @@ import asyncio
 import os, random, logging
 from typing import Final
 
-from discord import FFmpegPCMAudio
+from discord import FFmpegPCMAudio, opus
 
 from discodrome import DiscodromeClient
 
@@ -48,4 +48,8 @@ async def annoying_task(bot: DiscodromeClient):
 
 async def setup(bot: DiscodromeClient):
 	if ANNOYING_ENABLE:
+		if not opus.is_loaded() and os.name != 'nt':
+			# alternative path
+			opus.load_opus('/usr/lib/libopus.so.0')
+
 		asyncio.create_task(annoying_task(bot))
